@@ -1,6 +1,13 @@
 <svg onload="init(evt, true)" width="100%" height="100%" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
+        
+        #title{
+            font-size: 80px;
+            dominant-baseline: hanging;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: bold;
+        }
 
         .red.saturated{
             fill:hsl(11, 100%, 59%);
@@ -8,62 +15,58 @@
         .red.unsaturated{
             fill:hsl(11, 0%, 80%);
         }
+
         .gray.unsaturated{
             fill:hsl(11, 0%, 59%);
         }
-
         .gray.saturated{
             fill:hsl(11, 6%, 59%);
-        }
-
-        #title{
-            font-size: 80px;
-            dominant-baseline: hanging;
-            font-family: 'Roboto Mono', monospace;
-            font-weight: bold;
-        }
+        }     
     </style>
     <rect id="boxgray" x="0" y="0" width="1920" height="1080" class="gray unsaturated" onclick="toggleSaturation(evt.target)" />
     <g filter="url(#greenscreen)">
         <!-- <mask id="box" > -->
-            <!-- </mask> -->
-            <rect id="boxred" x="0" y="0" width="1280" height="1080" class="red saturated" onclick="toggleSaturation(evt.target)" />
-            <text id="title" x="100" y="100" fill="lime" >Simultaneous Contrast</text>
-            <rect x="1200" y="500" fill="lime" width="300" height="300" />
-            <rect id="boxgray-small" x="1200" y="500" width="300" height="300" class="gray unsaturated" onclick="toggleSaturation(evt.target)" />
-            
+        <!-- </mask> -->
+        <rect id="boxred" x="0" y="0" width="1280" height="1080" class="red saturated" onclick="toggleSaturation(evt.target)" />
+        <text id="title" x="100" y="100" fill="lime"></text>
+        <rect x="1200" y="500" fill="lime" width="300" height="300" />
+        <rect id="boxgray-small" x="1200" y="500" width="300" height="300" class="gray unsaturated" onclick="toggleSaturation(evt.target)" />
+
     </g>
     <defs>
         <filter id="greenscreen">
-            <feColorMatrix in="SourceGraphic" 
-                  type="matrix" 
-                  values="
+            <feColorMatrix in="SourceGraphic" type="matrix" values="
                   1  0  0  0 
                   0  0  1  0 
                   0  0  0  0 
                   1  0  0  1 
-                  0  1 -1  1 ">
-            </feColorMatrix>
+                  0  1 -1  1 "></feColorMatrix>
         </filter>
     </defs>
     <script>
+        <![CDATA[
+
+        function init(evt, showTitle) {
+            if (showTitle) setTitle()
+        }
+        
+        function setTitle() {
+            if (navigator.language.split('-')[0] == 'de') {
+                document.getElementById('title').innerHTML = 'Kalt- / Warm-Kontrast';
+            }
+            else {
+                document.getElementById('title').innerHTML = 'Cold / Warm Contrast';
+            }
+        }
+
         function toggleSaturation(target) {
             var elm = document.getElementById(target.id);
             console.log(elm.classList)
             elm.classList.toggle("saturated");
             elm.classList.toggle("unsaturated");
           }
-        function init(evt, showTitle){
-            if(showTitle)
-                if(navigator.language.split('-')[0] == 'de')
-                {
-                    document.getElementById('title').innerHTML = 'Simultankontrast';
-                }
-                else
-                {
-                    document.getElementById('title').innerHTML = 'Simultaneous Contrast';
-                }
-        }
+          
+          ]]>
     </script>
-  
+
 </svg>
