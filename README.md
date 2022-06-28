@@ -3,7 +3,7 @@
 ```
 
 # Visuals Color Composition
-Visualisations of Johannes Itten's Seven Color Contrasts
+Visualisations of Johannes Itten's [Seven Color Contrasts](https://de.wikipedia.org/wiki/Sieben_Farbkontraste)
 
 1. Contrast of Hue
     - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/05-ColorAngle-Contrast.svg" height="100px">
