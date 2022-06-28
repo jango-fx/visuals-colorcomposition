@@ -37,10 +37,10 @@
         
         function setTitle() {
             if (navigator.language.split('-')[0] == 'de') {
-                document.getElementById('title').innerHTML = 'Kalt- / Warm-Kontrast';
+                document.getElementById('title').innerHTML = 'Helligkeitskontrast';
             }
             else {
-                document.getElementById('title').innerHTML = 'Cold / Warm Contrast';
+                document.getElementById('title').innerHTML = 'Brightness Contrast';
             }
         }
 
