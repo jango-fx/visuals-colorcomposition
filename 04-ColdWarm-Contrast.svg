@@ -10,11 +10,11 @@
         }
 
         .default-warm {
-            fill: rgb(223, 118, 103);
+            fill: hsl(10, 65%, 60%);
         }
 
         .default-cold {
-            fill: rgb(169, 193, 215);
+            fill: hsl(209, 65%, 75%);
             ;
         }
     </style>

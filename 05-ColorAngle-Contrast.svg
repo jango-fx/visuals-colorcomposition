@@ -14,34 +14,34 @@
         }
 
         .box1 {
-            fill: hsl(50, 100%, 60%);
+            fill: hsl(50, 100%, 65%);
         }
 
         .box2 {
-            fill: hsl(106, 100%, 60%);
+            fill: hsl(106, 100%, 65%);
         }
 
         .box3 {
-            fill: hsl(162, 100%, 60%);
+            fill: hsl(162, 100%, 65%);
         }
         .box4 {
-            fill: hsl(218, 100%, 60%);
+            fill: hsl(218, 100%, 65%);
         }
 
         .box5 {
-            fill: hsl(274, 100%, 60%);
+            fill: hsl(274, 100%, 65%);
         }
 
         .box6 {
-            fill: hsl(330, 100%, 60%);
+            fill: hsl(330, 100%, 65%);
         }
         
         .box7 {
-            fill: hsl(10, 100%, 60%);
+            fill: hsl(10, 100%, 65%);
         }
 
         .overlay {
-            fill: hsl(0, 100%, 60%);
+            fill: hsl(0, 100%, 65%);
             opacity: 60%;
         }
 
