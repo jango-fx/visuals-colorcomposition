@@ -10,7 +10,7 @@
         }
 
         .default-warm {
-            fill: hsl(350, 65%, 60%);
+            fill: hsl(330, 65%, 60%);
         }
 
         .default-cold {
@@ -42,7 +42,7 @@
         }
 
         function computeColor(target) {
-            var diffHue = 20;
+            var diffHue = 30;
             var diffRest = 5;
             var min = 10;
             var max = 360;
