@@ -14,7 +14,6 @@
     <!-- <rect id="box-dark" x="1060" y="0" width="860" height="1080" fill="black" onclick="toggleSaturation(evt.target)" /> -->
     <g id="container" ></g>
     <text id="title" x="100" y="100" fill="black"></text>
-    <script xlink:href="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/lib/alea.min.js" />
     <script>
         <![CDATA[
 
@@ -60,9 +59,7 @@
         }
 
         function computeColors(hue)
-        {
-            randSeed = new alea('seed');
-            
+        {            
             document.getElementById('box-bright').style.fill = createHSL(hue, 100, 50);
             let i = 0;
             for(let ix = 0; ix < 10; ix++){
@@ -83,7 +80,6 @@
                     
                     var sat = 50;
                     var brt = random(5+(45*(1-contrast)), 50+50*contrast);
-                    //var brt = 52.5+((95/2)*((randSeed('seed')-0.5)*2)*contrast)
 
                     theNode.style.fill = createHSL(hue, sat, brt);
                 }
