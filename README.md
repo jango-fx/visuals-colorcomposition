@@ -8,6 +8,7 @@ Visualisations of Johannes Itten's [Seven Color Contrasts](https://de.wikipedia.
 1. Contrast of Hue
     - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/05-ColorAngle-Contrast.svg" height="100px">
 2.  Light-Dark contrast
+    - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/02-Brightness-Contrast-02.svg" height="100px">
     - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/02-Brightness-Contrast.svg" height="100px">
 3.  Cold-Warm contrast
     - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/04-ColdWarm-Contrast.svg" height="100px">
