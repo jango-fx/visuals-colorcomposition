@@ -1,0 +1,81 @@
+<svg onload="init(evt, true)" width="100%" height="100%" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
+
+        #title {
+            font-size: 80px;
+            dominant-baseline: hanging;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: bold;
+        }
+
+        .default-warm {
+            fill: hsl(350, 65%, 60%);
+        }
+
+        .default-cold {
+            fill: hsl(90, 65%, 60%);
+            ;
+        }
+    </style>
+    <rect id="box1" x="0" y="0" width="960" height="1080" onclick="computeColor(evt.target)" class="default-warm" />
+
+    <rect id="box2" x="960" y="0" width="960" height="1080" onclick="computeColor(evt.target)" class="default-cold" />
+    <text id="title" x="100" y="100" fill="white"></text>
+
+    <defs></defs>
+    <script>
+        <![CDATA[
+
+        function init(evt, showTitle) {
+            if (showTitle) setTitle()
+            computeColor();
+        }
+        
+        function setTitle() {
+            if (navigator.language.split('-')[0] == 'de') {
+                document.getElementById('title').innerHTML = 'Kalt- / Warm-Kontrast';
+            }
+            else {
+                document.getElementById('title').innerHTML = 'Cold / Warm Contrast';
+            }
+        }
+
+        function computeColor(target) {
+            var diffHue = 20;
+            var diffRest = 5;
+            var min = 10;
+            var max = 360;
+            var threshold = 180;
+
+            var hue = random(min, max);
+            /*while (hue > threshold - diffHue && hue < threshold + diffHue) {
+                hue = random(min, max);
+            }
+            */
+            var sat = random(50, 100);
+            var brt = random(25, 65);
+            var hslColor = "hsl(" + hue + ", " + sat + "%, " + brt + "%)";
+
+            document.getElementById('box1').style.fill = hslColor;
+            console.log("warm: " + hslColor);
+
+           
+            hue = random(hue+180-diffHue, hue+180+ diffHue);
+           
+            sat = random(sat - diffRest / 2, sat + diffRest / 2);
+            brt = random(brt - diffRest / 2, brt + diffRest / 2);
+            hslColor = "hsl(" + hue + ", " + sat + "%, " + brt + "%)";
+            document.getElementById('box2').style.fill = hslColor;
+
+            console.log("cold: " + hslColor);
+        }
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+        
+        ]]>
+    </script>
+
+</svg>

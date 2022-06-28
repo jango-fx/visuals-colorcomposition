@@ -13,6 +13,7 @@ Visualisations of Johannes Itten's [Seven Color Contrasts](https://de.wikipedia.
 3.  Cold-Warm contrast
     - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/04-ColdWarm-Contrast.svg" height="100px">
 4.  Complementary contrast
+    - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/03-Complementary-Contrast.svg" height="100px">
 5.  Simultaneous contrast
     - <img src="https://raw.githubusercontent.com/jango-fx/visuals-colorcomposition/main/03-Simultaneous-Contrast.svg" height="100px">
 6.  Contrast of Saturation
