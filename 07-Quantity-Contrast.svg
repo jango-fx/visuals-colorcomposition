@@ -1,0 +1,81 @@
+<svg onload="init(evt, true)" width="100%" height="100%" viewBox="0 0 1920 1080" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    xmlns:serif="http://www.serif.com/"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
+
+        #title {
+            font-size: 80px;
+            dominant-baseline: hanging;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: bold;
+        }
+
+        .default-saturated {
+            fill: rgb(247, 160, 57);
+        }
+
+        .default-unsaturated {
+            fill: rgb(94, 111, 103);
+            ;
+        }
+    </style>
+    <rect id="boxgray" x="0" y="0" width="1920" height="1080" class="default-unsaturated" onclick="runAnimation(evt.target)" />
+    <rect id="boxcolor" x="1060" y="0" width="860" height="1080" class="default-saturated" onclick="runAnimation(evt.target)" />
+    <animate id="box_anim_01" xlink:href="#boxcolor" attributeName="width" from="860" to="20" dur="1.0s" begin="indefinite" fill="freeze" />
+    <animate id="box-anim-02" xlink:href="#boxcolor" attributeName="x" from="1060" to="1280" dur="1.0s" begin="box_anim_01.begin" fill="freeze" />
+    <text id="title" x="100" y="100" fill="white"></text>
+
+    <script>
+        <![CDATA[
+
+            function init(evt, showTitle) {
+                if (showTitle) setTitle();
+                computeColors();
+            }
+        
+        function setTitle() {
+            if (navigator.language.split('-')[0] == 'de') {
+                document.getElementById('title').innerHTML = 'Quantitätskontrast';
+            }
+            else {
+                document.getElementById('title').innerHTML = 'Quantity Contrast';
+            }
+        }
+
+        function computeColors() {
+            console.log("compute colors");
+            var boxgray = document.getElementById("boxgray");
+            console.log(boxgray);
+            var boxcolor = document.getElementById("boxcolor");
+            console.log(boxcolor);
+            
+            var hue = random(0,360);
+            var sat = random(5, 15);
+            var brt = random(15, 30);
+            var hslColor = "hsl(" + hue + ", " + sat + "%, " + brt + "%)";
+            console.log(hslColor);
+            boxgray.style.fill = hslColor;
+
+            hue = random(hue-60,hue+60);
+            sat = random(75, 100);
+            brt = random(50, 70);
+            hslColor = "hsl(" + hue + ", " + sat + "%, " + brt + "%)";
+            console.log(hslColor);
+            boxcolor.style.fill = hslColor;
+        }
+
+        function runAnimation(target) {
+            console.log("click");
+            document.getElementById("box_anim_01").beginElement();
+        }
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        ]]>
+    </script>
+
+</svg>
