@@ -8,10 +8,19 @@
             font-family: 'Roboto Mono', monospace;
             font-weight: bold;
         }
-    </style>
-    <rect id="boxwarm" x="0" y="0" width="960" height="1080" onclick="computeColor(evt.target)" />
 
-    <rect id="boxcold" x="960" y="0" width="960" height="1080" onclick="computeColor(evt.target)" />
+        .default-warm {
+            fill: rgb(223, 118, 103);
+        }
+
+        .default-cold {
+            fill: rgb(169, 193, 215);
+            ;
+        }
+    </style>
+    <rect id="boxwarm" x="0" y="0" width="960" height="1080" onclick="computeColor(evt.target)" class="default-warm" />
+
+    <rect id="boxcold" x="960" y="0" width="960" height="1080" onclick="computeColor(evt.target)" class="default-cold" />
     <text id="title" x="100" y="100" fill="white"></text>
 
     <defs></defs>
