@@ -27,6 +27,8 @@
         <![CDATA[
 
         var contrast;
+        var contrastMax = 0.8;
+        var contrastMin = 0.2;
         var hue;
         var rand;
         var sat = 0;
@@ -36,7 +38,7 @@
             document.addEventListener('wheel', scrollHandler, false); //Firefox
             if (showTitle) setTitle()
 
-            contrast = 0.2;
+            contrast = 0.75;
             hue = random(0, 360);
             computeColors(hue);
         }
@@ -62,10 +64,10 @@
          
         function scrollHandler(target) {
             //console.log(target);
-            if(!(contrast >= 0.8 && target.deltaY > 0) && !(contrast <= 0.2 && target.deltaY < 0))
+            if(!(contrast >= contrastMax && target.deltaY > 0) && !(contrast <= contrastMin && target.deltaY < 0))
             {
                 contrast += target.deltaY*0.002;
-                contrast = contrast.clamp(0.2, 0.8);
+                contrast = contrast.clamp(contrastMin, contrastMax);
                 computeColors(hue);
             }
         }
@@ -93,7 +95,6 @@
                     theNode.style.fill = createHSL(hue, sat, brt);
                 }
             }
-
         }
 
         function createNode(n, v) {
@@ -105,11 +106,14 @@
 
         Number.prototype.clamp = function(min, max) {
             return Math.min(Math.max(this, min), max);
-          };
+        };
         
         const createHSL = (hue, sat, brt) => "hsl(" + hue + ", " + sat + "%, " + brt + "%)";
+        
         const constrain = (num, min, max) => Math.min(Math.max(num, min), max);
         const random = (min, max) => Math.random() * (max - min) + min;
+        const map = (value, istart, istop, ostart, ostop) => ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+
           ]]>
     </script>
 
