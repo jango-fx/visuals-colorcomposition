@@ -1,7 +1,5 @@
-<svg onload="init(evt, true)" width="100%" height="100%" viewBox="0 0 1920 1080" version="1.1"
-    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
-    xmlns:serif="http://www.serif.com/"
-    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080"
+    onload="init(evt, true)">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
 
@@ -16,65 +14,35 @@
             width: 260px;
             height: 1080px;
         }
-
-        #box1 {
-            fill: hsl(43, 15%, 20%);
-        }
-
-        #box2 {
-            fill: hsl(43, 30%, 25%);
-        }
-
-        #box3 {
-            fill: hsl(43, 45%, 30%);
-        }
-
-        #box4 {
-            fill: hsl(43, 60%, 35%);
-        }
-
-        #box5 {
-            fill: hsl(43, 70%, 40%);
-        }
-
-        #box6 {
-            fill: hsl(43, 85%, 45%);
-        }
-
-        #box7 {
-            fill: hsl(43, 100%, 50%);
-        }
-
-        .overlay {
-            fill: hsl(210, 100%, 50%);
-            opacity: 60%;
-        }
     </style>
+
     <rect id="bg" onclick="click(evt.target)" width="1920" height="1080" fill="black" />
     <g id="swatches">
-        <rect id="box1" class="box" onclick="click(evt.target)" x="0" y="0" />
-        <rect id="box2" class="box" onclick="click(evt.target)" x="276.7" y="0" />
-        <rect id="box3" class="box" onclick="click(evt.target)" x="553.3" y="0" />
-        <rect id="box4" class="box" onclick="click(evt.target)" x="830.0" y="0" />
-        <rect id="box5" class="box" onclick="click(evt.target)" x="1106.7" y="0" />
-        <rect id="box6" class="box" onclick="click(evt.target)" x="1383.3" y="0" />
-        <rect id="box7" class="box" onclick="click(evt.target)" x="1660.0" y="0" />
+        <rect id="box1" class="box" onclick="click(evt.target)" x="0" y="0" fill="hsl(43, 15%, 20%)" />
+        <rect id="box2" class="box" onclick="click(evt.target)" x="276.7" y="0" fill="hsl(43, 30%, 25%)" />
+        <rect id="box3" class="box" onclick="click(evt.target)" x="553.3" y="0" fill="hsl(43, 45%, 30%)" />
+        <rect id="box4" class="box" onclick="click(evt.target)" x="830.0" y="0" fill="hsl(43, 60%, 35%)" />
+        <rect id="box5" class="box" onclick="click(evt.target)" x="1106.7" y="0" fill="hsl(43, 70%, 40%)" />
+        <rect id="box6" class="box" onclick="click(evt.target)" x="1383.3" y="0" fill="hsl(43, 85%, 45%)" />
+        <rect id="box7" class="box" onclick="click(evt.target)" x="1660.0" y="0" fill="hsl(43, 100%, 50%)" />
     </g>
-
     <text id="title" x="100" y="100" fill="white" stroke="none"></text>
 
     <script xlink:href="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@latest/dist/svg.min.js" />
     <script>
         <![CDATA[
+
         var num = 7;
         var hue = 35;
 
-        function init(evt, showTitle) {
+        function init(evt, showTitle)
+        {
             if (showTitle) setTitle();
             computeRandomColors(num);
         }
 
-        function click(target) {
+        function click(target)
+        {
             console.log("click");
             
             hue = random(0, 360);
@@ -82,8 +50,7 @@
             var svg = SVG('svg')
             var swatches = document.getElementById('swatches')
             swatches.remove();
-            swatches = svg.group().after(SVG('#title'));
-            swatches.attr('id', 'swatches');
+            swatches = svg.group({ id: 'swatches' }).after(SVG('#title'));
             
             num = Math.floor(7+Math.random()*10);
             let startX = 0;
@@ -98,33 +65,14 @@
             computeRandomColors();
         }
         
-        function setTitle() {
-            if (navigator.language.split('-')[0] == 'de') {
-                document.getElementById('title').innerHTML = 'Qualitätskontrast';
-            }
-            else {
-                document.getElementById('title').innerHTML = 'Quality Contrast';
-            }
-        }
 
-        function computeColors() {
+        function computeRandomColors() 
+        {
             console.log("compute colors");
 
-            var hue = random(0,360);
-            for(let i = 0; i < num; i++){
-                var sat = i*(100/num)
-                var brt = 50;
-                var hslColor = "hsl(" + hue + ", " + sat + "%, " + brt + "%)";
-                var id = 'box'+(i+1);
-                document.getElementById(id).style.fill = hslColor;
-            }
-        }
-
-        function computeRandomColors() {
-            console.log("compute colors");
-
-            for(let i = 0; i < num; i++){
-                var probability = Math.pow(Math.random(),4)//(getNormallyDistributedRandomNumber(0, 1))
+            for(let i = 0; i < num; i++)
+            {
+                var probability = Math.pow(Math.random(),4);
                 probability = clamp(probability, 0.0, 1.0);
                 hue = Math.random()*5 + hue;
                 var sat = probability*95 + 10;
@@ -135,33 +83,20 @@
             }
         }
 
-        function random(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-
-        function boxMullerTransform() {
-            const u1 = Math.random();
-            const u2 = Math.random();
-            
-            const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
-            const z1 = Math.sqrt(-2.0 * Math.log(u1)) * Math.sin(2.0 * Math.PI * u2);
-            
-            return { z0, z1 };
-        }
-
-        function getNormallyDistributedRandomNumber(mean, stddev) {
-            const { z0, _ } = boxMullerTransform();
-            
-            return z0 * stddev + mean;
-        }
-
-        function gaussianRandom()
+        function setTitle() 
         {
-            return getNormallyDistributedRandomNumber(0,1);  
+            if (navigator.language.split('-')[0] == 'de')
+            {
+                document.getElementById('title').innerHTML = 'Qualitätskontrast';
+            }
+            else
+            {
+                document.getElementById('title').innerHTML = 'Quality Contrast';
+            }
         }
 
-
+        const random = (min, max) => Math.random() * (max - min) + min;
+        
         const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
         const map = (value, istart, istop, ostart, ostop) => {ostart + (ostop - ostart) * ((value - istart) / (istop - istart))};
